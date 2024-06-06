@@ -150,7 +150,7 @@ class LinkedList:
             return None
 LL = LinkedList()        
 
-postfix_exp = '5379++'
+postfix_exp = '5379++-'
 try:
     for i in range(len(postfix_exp)):
         if postfix_exp[i].isnumeric():
