@@ -1,3 +1,5 @@
+import re
+
 def IsInTheDomain(Protein):
     Aminoacids = ['C','A','V','L','I','M','G','R','K','H','D','E','N','Q','S','T','Y','F','W','P',]
     stack = list(Protein.upper())
@@ -33,6 +35,15 @@ def IsInTheDomain(Protein):
         return False
     return True
 
-Protein = "CAASCGGPYACGGWAGYHAGWH"
+def RE_IsInTheDomain(Protein):
+    Aminoacids = ['C','A','V','L','I','M','G','R','K','H','D','E','N','Q','S','T','Y','F','W','P',]
+    Valid = [element for element in Protein.upper() if element in Aminoacids]
+    if ''.join(Valid) != Protein:
+        return False
+    x = re.search("^C.{2,4}C.{3}(L|I|V|M|F|Y|W|C|X).{8}H.{3,5}H$",Protein)
+    return True if x else False
 
+
+Protein = "CAASCGGPYACGGWAGYHAGWH"
 print(IsInTheDomain(Protein))
+print(RE_IsInTheDomain(Protein))
